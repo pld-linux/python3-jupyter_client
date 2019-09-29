@@ -9,7 +9,7 @@ Summary:	Reference implementation of the Jupyter protocol
 Summary(pl.UTF-8):	Referencyjna implementacja protokołu Jupyter
 Name:		python-jupyter_client
 Version:	5.3.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/jupyter_client/
@@ -121,6 +121,7 @@ for f in $RPM_BUILD_ROOT%{_bindir}/jupyter-* ; do
 done
 
 %py_postclean
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/jupyter_client/tests
 %endif
 
 %if %{with python3}
@@ -129,6 +130,8 @@ done
 for f in $RPM_BUILD_ROOT%{_bindir}/jupyter-*[!2] ; do
 	%{__mv} "$f" "${f}-3"
 done
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/jupyter_client/tests
 %endif
 
 %clean
