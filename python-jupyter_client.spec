@@ -8,13 +8,13 @@
 Summary:	Reference implementation of the Jupyter protocol
 Summary(pl.UTF-8):	Referencyjna implementacja protokołu Jupyter
 Name:		python-jupyter_client
-Version:	5.3.3
-Release:	4
+Version:	5.3.5
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/jupyter_client/
 Source0:	https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
-# Source0-md5:	dd4f60f3ccf41cd54b0c3719a6610a1a
+# Source0-md5:	d99103c24cae3cf07a25296a2ef12d72
 URL:		https://pypi.org/project/jupyter_client/
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
@@ -23,12 +23,13 @@ BuildRequires:	python-setuptools
 BuildRequires:	python-dateutil >= 2.1
 BuildRequires:	python-ipykernel
 BuildRequires:	python-ipython
-BuildRequires:	python-jupyter_core
+BuildRequires:	python-jupyter_core >= 4.6.0
 BuildRequires:	python-mock
+BuildRequires:	python-msgpack
 BuildRequires:	python-pytest
 BuildRequires:	python-traitlets
 BuildRequires:	python-tornado >= 4.1
-BuildRequires:	python-zmq >= 2.1
+BuildRequires:	python-zmq >= 13
 %endif
 %endif
 %if %{with python3}
@@ -38,11 +39,12 @@ BuildRequires:	python3-setuptools
 BuildRequires:	python3-dateutil >= 2.1
 BuildRequires:	python3-ipykernel
 BuildRequires:	python3-ipython
-BuildRequires:	python3-jupyter_core
+BuildRequires:	python3-jupyter_core >= 4.6.0
+BuildRequires:	python3-msgpack
 BuildRequires:	python3-pytest
 BuildRequires:	python3-traitlets
 BuildRequires:	python3-tornado >= 4.1
-BuildRequires:	python3-zmq >= 2.1
+BuildRequires:	python3-zmq >= 13
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
@@ -98,6 +100,9 @@ Dokumentacja API modułu Pythona jupyter_client.
 %build
 %if %{with python2}
 %py_build %{?with_tests:test}
+# failing tests:
+# test_datetimes_msgpack (jupyter_client.tests.test_session.TestSession)
+# test_tracking (jupyter_client.tests.test_session.TestSession)
 %endif
 
 %if %{with python3}
