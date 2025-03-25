@@ -66,7 +66,7 @@ Dokumentacja API modułu Pythona jupyter_client.
 
 %prep
 %setup -q -n jupyter_client-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %py3_build %{?with_tests:test}
