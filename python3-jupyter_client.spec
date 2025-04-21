@@ -6,13 +6,13 @@
 Summary:	Reference implementation of the Jupyter protocol
 Summary(pl.UTF-8):	Referencyjna implementacja protokołu Jupyter
 Name:		python3-jupyter_client
-Version:	6.1.7
-Release:	2
+Version:	6.1.12
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/jupyter_client/
 Source0:	https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
-# Source0-md5:	607468e6039c3fe5566b6d2bc33ac49a
+# Source0-md5:	6236c21716976fc94b4b452149c6d8e7
 Patch0:		%{name}-mock.patch
 URL:		https://pypi.org/project/jupyter_client/
 BuildRequires:	python3-modules >= 1:3.5
