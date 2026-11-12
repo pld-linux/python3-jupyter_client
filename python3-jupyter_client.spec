@@ -6,34 +6,34 @@
 Summary:	Reference implementation of the Jupyter protocol
 Summary(pl.UTF-8):	Referencyjna implementacja protokołu Jupyter
 Name:		python3-jupyter_client
-Version:	8.6.3
+Version:	8.10.0
 Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/jupyter_client/
 Source0:	https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
-# Source0-md5:	9d57963cc1cb5623c0cc1d051e63039b
+# Source0-md5:	33b64c6f82f28c118b39ee93e2af17be
 Patch0:		jupyter_client-sphinx.patch
 URL:		https://pypi.org/project/jupyter_client/
 BuildRequires:	python3-build
 BuildRequires:	python3-hatchling >= 1.5
 BuildRequires:	python3-installer
-BuildRequires:	python3-modules >= 1:3.8
+BuildRequires:	python3-modules >= 1:3.10
 %if %{with tests}
+BuildRequires:	python3-anyio
 BuildRequires:	python3-dateutil >= 2.8.2
-%if "%{_ver_lt %{py3_ver} 3.10}" == "1"
-BuildRequires:	python3-importlib_metadata >= 4.8.3
-%endif
 BuildRequires:	python3-ipykernel >= 6.14
 BuildRequires:	python3-ipython
-BuildRequires:	python3-jupyter_core >= 4.12.0
+BuildRequires:	python3-jupyter_core >= 5.1
+BuildRequires:	python3-msgpack
 BuildRequires:	python3-pytest
-BuildRequires:	python3-pytest-jupyter >= 0.4.1
+BuildRequires:	python3-pytest-jupyter >= 0.6.2
 #BuildRequires:	python3-pytest-asyncio
 BuildRequires:	python3-pytest-timeout
 BuildRequires:	python3-traitlets >= 5.3
-BuildRequires:	python3-tornado >= 6.2
-BuildRequires:	python3-zmq >= 23.0
+BuildRequires:	python3-tornado >= 6.4.1
+BuildRequires:	python3-typing_extensions >= 4.13.0
+BuildRequires:	python3-zmq >= 25.0
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
@@ -44,10 +44,10 @@ BuildRequires:	python3-pydata_sphinx_theme
 BuildRequires:	python3-sphinx_autodoc_typehints
 BuildRequires:	python3-sphinxcontrib-spelling
 BuildRequires:	python3-sphinxcontrib_github_alt
-BuildRequires:	python3-zmq >= 23.0
+BuildRequires:	python3-zmq >= 25.0
 BuildRequires:	sphinx-pdg-3 >= 4
 %endif
-Requires:	python3-modules >= 1:3.8
+Requires:	python3-modules >= 1:3.10
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
